@@ -1,3 +1,10 @@
+terraform {
+  backend "azurem"{
+    resource_group_name = "terrafromcodes"
+    storage_account_name = "terrafromcodes"
+    container_name       = "tfstatefiles"
+    key                  = "dev.terrafrom.tfstate"
+  }
 resource "random_pet" "rg-name" {
   prefix    = var.resource_group_name_prefix
 }
