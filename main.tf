@@ -91,9 +91,17 @@ resource "azurerm_storage_account" "mystorageaccount" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   #storage_account_name = "terrafromcodes"
-  container_name       = "tfstatefiles"
-  key                  = "dev.terrafrom.tfstate"
+  #container_name       = "tfstatefiles"
+  #key                  = "dev.terrafrom.tfstate"
   
+}
+terraform {
+    backend "azurerm" {
+    resource_group_name  = "terrafromcodes"
+    storage_account_name = "terrafromcodes"
+    container_name       = "tfstatefiles"
+    key                  = "dev.terrafrom.tfstate"
+    }
 }
 
 # Create (and display) an SSH key
