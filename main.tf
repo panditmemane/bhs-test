@@ -5,7 +5,7 @@ resource "random_pet" "rg-name" {
 resource "azurerm_resource_group" "rg" {
   name      = random_pet.rg-name.id
   location  = var.resource_group_location
-  resource_group_name = "terrafromcodes"
+  #resource_group_name = "terrafromcodes"
   storage_account_name = "terrafromcodes"
   container_name       = "tfstatefiles"
   key                  = "dev.terrafrom.tfstate"
