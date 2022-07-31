@@ -53,7 +53,7 @@ jobs:
     - name: SSH to connect to the virtual machine
       run: terraform output -raw tls_private_key > id_rsa
     - name: public IP
-      #run: terraform output public_ip_address
+      run: terraform output public_ip_address
       run: variable=$(terraform output public_ip_address)
     - name: ssh to VM
       #run: ssh -i id_rsa azureuser@public_ip_address
