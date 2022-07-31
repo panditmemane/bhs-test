@@ -58,4 +58,4 @@ jobs:
      
     - name: ssh to VM
       #run: ssh -i id_rsa azureuser@public_ip_address
-      run: ssh -t -t -i id_rsa azureuse@terraform output --raw public_ip_address
+      run: ssh -t -t -i id_rsa azureuse@"$(terraform output --raw public_ip_address)"
