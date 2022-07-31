@@ -53,7 +53,7 @@ jobs:
     - name: SSH key copy
       run: terraform output -raw tls_private_key > id_rsa
     - name: change key ownership
-      run: chmod 700 ./id_rsa
+      run: chmod 600 ./id_rsa
     - name: public IP
       run: terraform output --raw public_ip_address
      # run: variable=$(terraform output public_ip_address)
