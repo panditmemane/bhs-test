@@ -50,8 +50,10 @@ jobs:
     - name: Terraform Apply
       #if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: terraform apply main.tfplan
-    - name: SSH to connect to the virtual machine
+    - name: SSH key copy
       run: terraform output -raw tls_private_key > id_rsa
+    - name: change key ownership
+      run: chmod 700 ./id_rsa
     - name: public IP
       run: terraform output --raw public_ip_address
      # run: variable=$(terraform output public_ip_address)
