@@ -20,8 +20,8 @@ jobs:
     defaults:
       run:
         shell: bash
-       shell: $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
-
+       shell: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+       
     steps:
     - name: Checkout
       uses: actions/checkout@v2
