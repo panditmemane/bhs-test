@@ -138,16 +138,4 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
   }
 }
 
-terraform {
-    backend "azurerm" {
-        resource_group_name  = "terrafromcodes"
-        storage_account_name = "terrafromcodes"
-        container_name       = "tfstatefiles"
-        key                  = "dev.terrafrom.tfstate"    
-    }
-}
-module "RG" {
-    source   = "./modules/RG"
-    rgname   = var.rgname
-    location = var.location
-}
+
