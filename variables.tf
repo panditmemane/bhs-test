@@ -7,3 +7,13 @@ variable "resource_group_location" {
   default       = "eastus"
   description   = "Location of the resource group."
 }
+variable "rgname" {
+  description = "Resource Group Name"
+  default = "github-action1"
+  type    = string
+}
+variable "location" {
+  description  = "Azurelocation"
+  default      = "East US"
+  type         = string  
+}
