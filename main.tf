@@ -95,13 +95,14 @@ resource "azurerm_storage_account" "mystorageaccount" {
   #key                  = "dev.terrafrom.tfstate"
   
 }
-terraform {
-    backend "azurerm" {
+ resource "azurerm_storage_account" "terrafromcodes" {
+    #name                     = "diag${random_id.randomId.hex}"
+    #location                 = azurerm_resource_group.rg.location
+    #esource_group_name      = azurerm_resource_group.rg.name
     resource_group_name  = "terrafromcodes"
     storage_account_name = "terrafromcodes"
     container_name       = "tfstatefiles"
     key                  = "dev.terrafrom.tfstate"
-    }
 }
 
 # Create (and display) an SSH key
