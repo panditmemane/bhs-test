@@ -5,7 +5,7 @@ name: 'Terraform'
 on:
   push:
     branches:
-    - "pandit"
+    - "main"
   pull_request:
 
 permissions:
