@@ -24,26 +24,3 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "terrafromdemo" {
-  name     = "terrafromdemo"
-  location = "East US"
-}
-
-resource "azurerm_storage_account" "tfstate" {
-  name                     = "terrafromdemo${random_string.resource_code.result}"
-  resource_group_name      = azurerm_resource_group.terrafromdemo.name
-  location                 = azurerm_resource_group.terrafromdemo.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  #allow_blob_public_access = true
-
-  tags = {
-    environment = "staging"
-  }
-}
-
-resource "azurerm_storage_container" "terrafromcodes" {
-  name                  = "terrafromcodes"
-  storage_account_name  = azurerm_storage_account.tfstate.name
-  container_access_type = "blob"
-}
