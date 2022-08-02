@@ -8,6 +8,12 @@ terraform {
       version = "=3.0.0"
     }
   }
+  backend "azurerm" {
+        resource_group_name  = "terrafromdemo"
+        storage_account_name = "terrafromcodes"
+        container_name       = "tfstatefiles"
+        key                  = "terraform.tfstate"
+    }
 }
 
 provider "azurerm" {
@@ -16,4 +22,28 @@ provider "azurerm" {
     client_secret   = "JE78Q~~wQxEDguXLElZL2d-53Ynk7NxaLjOPgdd_"
     tenant_id       = "4c6daf9f-820a-4a2a-99c5-1e27564c397e"
   features {}
+}
+
+resource "azurerm_resource_group" "terrafromdemo" {
+  name     = "terrafromdemo"
+  location = "East US"
+}
+
+resource "azurerm_storage_account" "tfstate" {
+  name                     = "terrafromdemo${random_string.resource_code.result}"
+  resource_group_name      = azurerm_resource_group.terrafromdemo.name
+  location                 = azurerm_resource_group.terrafromdemo.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  #allow_blob_public_access = true
+
+  tags = {
+    environment = "staging"
+  }
+}
+
+resource "azurerm_storage_container" "terrafromcodes" {
+  name                  = "terrafromcodes"
+  storage_account_name  = azurerm_storage_account.tfstate.name
+  container_access_type = "blob"
 }
