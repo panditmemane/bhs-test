@@ -14,6 +14,11 @@ permissions:
 jobs:
   terraform:
     name: 'Terraform'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_SECRATE }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTIONS }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENENT_ID }}
     runs-on: ubuntu-latest
     environment: production
 
